@@ -13,10 +13,25 @@ class Db
         $this->dbh = new \PDO($dsn, 'root', '');
     }
 
-    public function query($sql, $data = [])
+    public function query($sql, $data = [], $class = '')
     {
         $sth = $this->dbh->prepare($sql);
         $sth->execute($data);
-        return $sth->fetchAll(\PDO::FETCH_ASSOC);
+        $res = $sth->fetchAll(\PDO::FETCH_ASSOC);
+
+        if (empty($class)) {
+            return $res;
+        } else {
+            $arr = [];
+
+            foreach ($res as $item) {
+                $obj = new $class;
+                foreach ($item as $key => $value) {
+                    $obj->$key = $value;
+                }
+                $arr[] = $obj;
+            }
+            return $arr;
+        }
     }
 }
