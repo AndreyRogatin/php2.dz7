@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Person;
+
 require __DIR__ . '/autoload.php';
 
-$db = new \App\Db;
-var_dump($db->query('SELECT * FROM persons', [], 'App\Models\Person'));
+
+var_dump(Person::findAll());
