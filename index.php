@@ -8,4 +8,6 @@ use App\Models\User;
 require __DIR__ . '/autoload.php';
 
 
-var_dump(Article::findNLastArticles(3));
+$articles = Article::findNLastArticles(3);
+
+include __DIR__ . '/App/templates/index.php';
