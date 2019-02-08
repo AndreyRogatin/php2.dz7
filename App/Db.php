@@ -31,4 +31,9 @@ class Db
         $sth = $this->dbh->prepare($sql);
         return $sth->execute($params);
     }
+
+    public function getLastId()
+    {
+        return $this->dbh->lastInsertId();
+    }
 }
