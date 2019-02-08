@@ -31,4 +31,26 @@ abstract class Model
             return $res[0];
         }
     }
+
+    public function update()
+    {
+        $fields = get_object_vars($this);
+        $sets = [];
+        $params = [];
+
+        foreach ($fields as $key => $value) {
+            $params[':' . $key] = $value;
+            if ('id' === $key) {
+                continue;
+            }
+            $sets[] = $key . '=:' . $key;
+        }
+
+        $sql = 'UPDATE ' . static::$table . ' 
+                SET ' . implode(', ', $sets) . ' 
+                WHERE id=:id';
+
+        $db = new Db;
+        $db->execute($sql, $params);
+    }
 }
