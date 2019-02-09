@@ -77,4 +77,13 @@ abstract class Model
         $db = new Db;
         $db->execute($sql, $params);
     }
+
+    public function save()
+    {
+        if (isset($this->id)) {
+            $this->update();
+        } else {
+            $this->insert();
+        }
+    }
 }
