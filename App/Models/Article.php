@@ -11,7 +11,13 @@ class Article extends Model
     public $body;
     public $author_id;
 
-    public function __get($key)
+    /**
+     * Функция возвращает автора статьи в виде объекта класса Author
+     *
+     * @param $key string
+     * @return Author
+     */
+    public function __get(string $key)
     {
         if ('author' === $key) {
             if (!empty($this->author_id)) {
@@ -20,7 +26,26 @@ class Article extends Model
         }
     }
 
-    public static function findNLastArticles($num)
+    /**
+     * Функция проверяет существование поля author
+     *
+     * @param $key string
+     * @return bool
+     */
+    public function __isset(string $key)
+    {
+        if ('author' === $key) {
+            return isset($this->author_id);
+        }
+    }
+
+    /**
+     * Функция возвращает $num последних записей из таблицы
+     *
+     * @param $num integer
+     * @return array
+     */
+    public static function findNLastArticles(int $num)
     {
         return array_reverse(array_slice(static::findAll(), -$num));
     }

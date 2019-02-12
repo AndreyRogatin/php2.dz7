@@ -11,6 +11,11 @@ abstract class Model
 
     public $id;
 
+    /**
+     * Функция возвращает все записи из таблицы
+     *
+     * @return array
+     */
     public static function findAll()
     {
         $db = new Db;
@@ -18,7 +23,13 @@ abstract class Model
         return $db->query($sql, [], static::class);
     }
 
-    public static function findById($id)
+    /**
+     * Функция возвращает одну запись из таблицы с заданным id
+     *
+     * @param $id integer
+     * @return bool|object
+     */
+    public static function findById(int $id)
     {
         $db = new Db;
         $sql = 'SELECT * FROM ' . static::$table . ' WHERE id=:id';
@@ -32,6 +43,9 @@ abstract class Model
         }
     }
 
+    /**
+     * Функция вставляет новую запись в таблицу
+     */
     public function insert()
     {
         $fields = get_object_vars($this);
@@ -56,6 +70,9 @@ abstract class Model
         $this->id = $db->getLastId();
     }
 
+    /**
+     * Функция обновляет существующую запись в таблице
+     */
     public function update()
     {
         $fields = get_object_vars($this);
@@ -78,6 +95,9 @@ abstract class Model
         $db->execute($sql, $params);
     }
 
+    /**
+     * Фукция сохранят запись в таблицу
+     */
     public function save()
     {
         if (isset($this->id)) {
@@ -87,6 +107,9 @@ abstract class Model
         }
     }
 
+    /**
+     * Фукция удаляет запись из таблицы
+     */
     public function delete()
     {
         $sql = 'DELETE FROM ' . static::$table . ' WHERE id=:id';
