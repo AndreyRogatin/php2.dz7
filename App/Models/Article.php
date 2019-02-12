@@ -9,6 +9,16 @@ class Article extends Model
 
     public $title;
     public $body;
+    public $author_id;
+
+    public function __get($key)
+    {
+        if ('author' === $key) {
+            if (!empty($this->author_id)) {
+                return Author::findById($this->author_id);
+            }
+        }
+    }
 
     public static function findNLastArticles($num)
     {
