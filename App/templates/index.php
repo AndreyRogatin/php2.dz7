@@ -12,7 +12,7 @@
 <hr>
 <?php
 
-foreach ($articles as $article) {
+foreach ($articles as $article) :
     ?>
     <h2>
         <a href="/article.php?id=<?php echo $article->id; ?>">
@@ -21,7 +21,7 @@ foreach ($articles as $article) {
     </h2>
     <p><?php echo $article->body; ?></p>
     <?php
-}
+endforeach;
 ?>
 </body>
 </html>

@@ -6,5 +6,5 @@ use App\View;
 require __DIR__ . '/autoload.php';
 
 $view = new View;
-$view->assign('articles', Article::findNLastArticles(3));
+$view->articles = Article::findNLastArticles(3);
 $view->display(__DIR__ . '/App/templates/index.php');

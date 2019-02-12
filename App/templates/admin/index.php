@@ -15,7 +15,7 @@
 <ul>
     <?php
 
-    foreach ($articles as $article) {
+    foreach ($articles as $article) :
         ?>
         <li>
             <a href="/AdminPanel/article.php?id=<?php echo $article->id; ?>">
@@ -23,7 +23,7 @@
             </a>
         </li>
         <?php
-    }
+    endforeach;
     ?>
 </ul>
 <hr>
