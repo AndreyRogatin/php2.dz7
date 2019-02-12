@@ -1,9 +1,10 @@
 <?php
 
 use App\Models\Article;
+use App\View;
 
 require __DIR__ . '/autoload.php';
 
-$articles = Article::findNLastArticles(3);
-
-include __DIR__ . '/App/templates/index.php';
+$view = new View;
+$view->assign('articles', Article::findNLastArticles(3));
+$view->display(__DIR__ . '/App/templates/index.php');
