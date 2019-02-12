@@ -8,7 +8,14 @@
     <title>Article Template</title>
 </head>
 <body>
-    <h2><?php echo $article->title; ?></h2>
-    <p><?php echo $article->body; ?></p>
+<h2><?php echo $article->title; ?></h2>
+<p><?php echo $article->body; ?></p>
+<p>
+    <?php
+    if (isset($article->author)) {
+        echo 'Автор: ' . $article->author->name;
+    }
+    ?>
+</p>
 </body>
 </html>

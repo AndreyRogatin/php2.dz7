@@ -20,6 +20,13 @@ foreach ($articles as $article) :
         </a>
     </h2>
     <p><?php echo $article->body; ?></p>
+    <p>
+        <?php
+        if (isset($article->author)) {
+            echo 'Автор: ' . $article->author->name;
+        }
+        ?>
+    </p>
     <?php
 endforeach;
 ?>

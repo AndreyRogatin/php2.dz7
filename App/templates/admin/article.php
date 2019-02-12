@@ -11,6 +11,13 @@
 <h2><?php echo $article->title; ?></h2>
 <hr>
 <p><?php echo $article->body; ?></p>
+<p>
+    <?php
+    if (isset($article->author)) {
+        echo 'Автор: ' . $article->author->name;
+    }
+    ?>
+</p>
 <hr>
 <p align="center">
     <a href="/AdminPanel/delete.php?id=<?php echo $article->id; ?>">Удалить</a>
