@@ -4,14 +4,17 @@ namespace App\Controllers;
 
 
 use App\Models\Article as ArticleModel;
-use App\View;
 
-class Article
+class Article extends Controller
 {
-    public function action()
+    protected function access()
     {
-        $view = new View;
-        $view->article = ArticleModel::findById($_GET['id']);
-        $view->display(__DIR__ . '/../templates/article.php');
+        return false;
+    }
+
+    protected function handle()
+    {
+        $this->view->article = ArticleModel::findById($_GET['id']);
+        $this->view->display(__DIR__ . '/../templates/article.php');
     }
 }

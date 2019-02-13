@@ -4,14 +4,12 @@ namespace App\Controllers;
 
 
 use App\Models\Article;
-use App\View;
 
-class Index
+class Index extends Controller
 {
-    public function action()
+    protected function handle()
     {
-        $view = new View;
-        $view->articles = Article::findNLastArticles(3);
-        $view->display(__DIR__ . '/../templates/index.php');
+        $this->view->articles = Article::findNLastArticles(3);
+        $this->view->display(__DIR__ . '/../templates/index.php');
     }
 }
