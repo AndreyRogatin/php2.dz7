@@ -1,18 +1,8 @@
 <?php
 
-use App\Models\Article;
+use App\Controllers\Admin\Save;
 
 require __DIR__ . '/../autoload.php';
 
-if (isset($_POST['id'])) {
-    $article = Article::findById($_POST['id']);
-} else {
-    $article = new Article;
-}
-
-$article->title = $_POST['title'];
-$article->body = $_POST['body'];
-$article->save();
-
-header('Location: /AdminPanel/');
-die();
+$ctrl = new Save;
+$ctrl->action();
