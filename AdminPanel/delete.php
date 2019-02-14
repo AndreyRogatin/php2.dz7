@@ -1,11 +1,8 @@
 <?php
 
-use App\Models\Article;
+use App\Controllers\Admin\Delete;
 
 require __DIR__ . '/../autoload.php';
 
-$article = Article::findById($_GET['id']);
-$article->delete();
-
-header('Location: /AdminPanel/');
-die();
+$ctrl = new Delete;
+$ctrl->action();
