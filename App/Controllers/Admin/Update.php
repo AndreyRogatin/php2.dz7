@@ -3,7 +3,6 @@
 namespace App\Controllers\Admin;
 
 
-use App\Controllers\Controller;
 use App\Models\Article;
 
 class Update extends Controller

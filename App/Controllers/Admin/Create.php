@@ -3,8 +3,6 @@
 namespace App\Controllers\Admin;
 
 
-use App\Controllers\Controller;
-
 class Create extends Controller
 {
     protected function handle()

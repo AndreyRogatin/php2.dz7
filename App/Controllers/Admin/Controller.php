@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 
 use App\View;
@@ -18,6 +18,14 @@ abstract class Controller
 
     public function action()
     {
+        if ($this->access() === false) {
+            die('Доступ закрыт');
+        }
         $this->handle();
+    }
+
+    protected function access()
+    {
+        return true;
     }
 }

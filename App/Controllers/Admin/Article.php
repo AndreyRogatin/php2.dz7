@@ -3,7 +3,6 @@
 namespace App\Controllers\Admin;
 
 
-use App\Controllers\Controller;
 use App\Models\Article as ArticleModel;
 
 class Article extends Controller
