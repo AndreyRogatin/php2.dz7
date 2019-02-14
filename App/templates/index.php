@@ -15,7 +15,7 @@
 foreach ($articles as $article) :
     ?>
     <h2>
-        <a href="/article.php?id=<?php echo $article->id; ?>">
+        <a href="/?ctrl=article&act=action&id=<?php echo $article->id; ?>">
             <?php echo $article->title; ?>
         </a>
     </h2>
