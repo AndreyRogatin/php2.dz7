@@ -20,6 +20,7 @@ $ctrl = new $className;
 
 try {
     $ctrl->$action();
-} catch (\App\DbException $ex) {
-    die($ex->getMessage());
+} catch (\App\Exceptions\DbException $ex) {
+    $ctrl = new \App\Controllers\Errors\DbError($ex);
+    $ctrl->action();
 }
