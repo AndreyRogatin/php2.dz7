@@ -17,4 +17,9 @@ if (!empty($_GET['act'])) {
 $className = '\App\Controllers\\' . $ctrlName;
 
 $ctrl = new $className;
-$ctrl->$action();
+
+try {
+    $ctrl->$action();
+} catch (\App\DbException $ex) {
+    die($ex->getMessage());
+}
