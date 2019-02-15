@@ -20,9 +20,9 @@
 </p>
 <hr>
 <p align="center">
-    <a href="/AdminPanel/delete.php?id=<?php echo $article->id; ?>">Удалить</a>
+    <a href="/Admin/Delete/action?id=<?php echo $article->id; ?>">Удалить</a>
     |
-    <a href="/AdminPanel/update.php?id=<?php echo $article->id; ?>">Редактировать</a>
+    <a href="/Admin/Update/action?id=<?php echo $article->id; ?>">Редактировать</a>
 </p>
 </body>
 </html>

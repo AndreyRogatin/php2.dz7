@@ -8,7 +8,7 @@
     <title>Index Template</title>
 </head>
 <body>
-<p align="right"><a href="/AdminPanel/">Админ Панель</a></p>
+<p align="right"><a href="/Admin/Index/action">Админ Панель</a></p>
 <hr>
 <?php
 

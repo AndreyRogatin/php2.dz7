@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2>Редактировать новость</h2>
-<form action="/AdminPanel/save.php" method="post">
+<form action="/Admin/Save/action" method="post">
     <p><input type="text" name="title" size="70" value="<?php echo $article->title; ?>" required></p>
     <p><textarea cols="80" rows="20" name="body" required><?php echo $article->body; ?></textarea></p>
     <input type="hidden" name="id" value="<?php echo $article->id; ?>">

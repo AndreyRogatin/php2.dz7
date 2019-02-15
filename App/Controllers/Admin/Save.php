@@ -19,7 +19,7 @@ class Save extends Controller
         $article->body = $_POST['body'];
         $article->save();
 
-        header('Location: /AdminPanel/');
+        header('Location: /Admin/Index/action');
         die();
     }
 }

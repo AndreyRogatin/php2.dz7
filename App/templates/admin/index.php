@@ -18,7 +18,7 @@
     foreach ($articles as $article) :
         ?>
         <li>
-            <a href="/AdminPanel/article.php?id=<?php echo $article->id; ?>">
+            <a href="/Admin/Article/action?id=<?php echo $article->id; ?>">
                 <?php echo $article->title; ?>
             </a>
         </li>
@@ -28,7 +28,7 @@
 </ul>
 <hr>
 <p align="center">
-    <a href="/AdminPanel/create.php">Добавить статью</a>
+    <a href="/Admin/Create/action">Добавить статью</a>
 </p>
 </body>
 </html>

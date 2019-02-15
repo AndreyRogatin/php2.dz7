@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2>Добавьте новость</h2>
-<form action="/AdminPanel/save.php" method="post">
+<form action="/Admin/Save/action" method="post">
     <p><input type="text" name="title" size="70" " placeholder="Заголовок статьи" required></p>
     <p><textarea cols="80" rows="20" name="body" placeholder="Текст статьи" required></textarea></p>
     <button type="submit">Добавить</button>
