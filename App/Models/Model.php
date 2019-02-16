@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use App\Db;
+use App\Exceptions\NotFoundException;
 
 abstract class Model
 {
@@ -28,6 +29,7 @@ abstract class Model
      *
      * @param $id integer
      * @return bool|object
+     * @throws NotFoundException
      */
     public static function findById(int $id)
     {
@@ -37,7 +39,7 @@ abstract class Model
         $res = $db->query($sql, $params, static::class);
 
         if (empty($res)) {
-            return false;
+            throw new NotFoundException('Не удалось найти запись с id ' . $id . ' в таблице ' . static::$table );
         } else {
             return $res[0];
         }

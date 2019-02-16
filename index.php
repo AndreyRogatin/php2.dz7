@@ -23,4 +23,6 @@ try {
 } catch (\App\Exceptions\DbException $ex) {
     $ctrl = new \App\Controllers\Errors\DbError($ex);
     $ctrl->action();
+} catch (\App\Exceptions\NotFoundException $ex) {
+    die($ex->getMessage());
 }
