@@ -7,7 +7,6 @@ use App\Exceptions\NotFoundException;
 
 class NotFoundError extends Error
 {
-
     public function __construct(NotFoundException $ex)
     {
         parent::__construct($ex);
@@ -15,7 +14,7 @@ class NotFoundError extends Error
 
     protected function handle()
     {
-        $this->view->title = '404 Not Found';
+        $this->view->title = 'Ошибка 404 - не найдено';
         $this->view->ex = $this->ex;
         $this->view->display(__DIR__ . '/../../templates/error.php');
     }

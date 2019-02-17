@@ -20,4 +20,13 @@ if (count($parts) > 1) {
 $className = '\App\Controllers' . $ctrlName;
 
 $ctrl = new $className;
-$ctrl->$action();
+
+try {
+    $ctrl->$action();
+} catch (\App\Exceptions\DbException $ex) {
+    $ctrl = new \App\Controllers\Errors\DbError($ex);
+    $ctrl->action();
+} catch (\App\Exceptions\NotFoundException $ex) {
+    $ctrl = new \App\Controllers\Errors\NotFoundError($ex);
+    $ctrl->action();
+}

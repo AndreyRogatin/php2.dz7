@@ -15,7 +15,6 @@ if (!empty($_GET['act'])) {
 }
 
 $className = '\App\Controllers\\' . $ctrlName;
-
 $ctrl = new $className;
 
 try {

@@ -4,13 +4,53 @@ namespace App\Models;
 
 
 use App\Db;
+use App\Exceptions\MultiException;
 use App\Exceptions\NotFoundException;
 
 abstract class Model
 {
     protected static $table = '';
+    protected $errors;
 
     public $id;
+
+    public function __construct()
+    {
+        $this->errors = new MultiException;
+    }
+
+    /**
+     * Функция заполняет поля объекта данными из массива
+     *
+     * @param array $data
+     * @throws MultiException
+     */
+    public function fill(array $data)
+    {
+        foreach ($data as $key => $value) {
+
+            $cnt = count($this->errors->all());
+            $this->validate($key, $value);
+
+            if (count($this->errors->all()) === $cnt) {
+                $this->$key = $value;
+            }
+        }
+
+        if (!$this->errors->empty()) {
+            throw $this->errors;
+        }
+    }
+
+    /**
+     * Функция производит валидацию данных
+     *
+     * @param $key
+     * @param $value
+     */
+    protected function validate($key, $value)
+    {
+    }
 
     /**
      * Функция возвращает все записи из таблицы
@@ -39,7 +79,7 @@ abstract class Model
         $res = $db->query($sql, $params, static::class);
 
         if (empty($res)) {
-            throw new NotFoundException('Не удалось найти запись с id ' . $id . ' в таблице ' . static::$table );
+            throw new NotFoundException('Не удалось найти запись с id ' . $id . ' в таблице ' . static::$table);
         } else {
             return $res[0];
         }
@@ -56,7 +96,7 @@ abstract class Model
         $params = [];
 
         foreach ($fields as $key => $value) {
-            if ('id' === $key) {
+            if ('id' === $key || 'errors' === $key) {
                 continue;
             }
             $sets[] = $key;
@@ -82,6 +122,9 @@ abstract class Model
         $params = [];
 
         foreach ($fields as $key => $value) {
+            if ('errors' === $key) {
+                continue;
+            }
             $params[':' . $key] = $value;
             if ('id' === $key) {
                 continue;
