@@ -1,0 +1,3 @@
+1550488267|C:\OSPanel\domains\php2.dz5\App\Db.php|Ошибка соединения с БД
+1550488282|C:\OSPanel\domains\php2.dz5\App\Db.php|Ошибка запроса к БД
+1550488295|C:\OSPanel\domains\php2.dz5\App\Models\Model.php|Не удалось найти запись с id 9 в таблице news

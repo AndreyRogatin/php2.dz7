@@ -4,6 +4,7 @@ namespace App\Controllers\Errors;
 
 
 use App\Exceptions\DbException;
+use App\Logger;
 
 class DbError extends Error
 {
@@ -14,6 +15,7 @@ class DbError extends Error
 
     protected function handle()
     {
+        Logger::log($this->ex);
         $this->view->title = $this->ex->getMessage();
         $this->view->ex = $this->ex->getPrevious();
         $this->view->sql = $this->ex->getSql();
