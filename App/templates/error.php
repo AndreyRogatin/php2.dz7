@@ -27,10 +27,10 @@
         <td><?php echo $ex->getLine(); ?></td>
     </tr>
     <?php if (!empty($sql)) : ?>
-    <tr>
-        <td>Запрос</td>
-        <td><?php echo $sql; ?></td>
-    </tr>
+        <tr>
+            <td>Запрос</td>
+            <td><?php echo $sql; ?></td>
+        </tr>
     <?php endif; ?>
 </table>
 </body>
