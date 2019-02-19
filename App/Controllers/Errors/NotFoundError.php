@@ -16,8 +16,10 @@ class NotFoundError extends Error
     protected function handle()
     {
         Logger::log($this->ex);
-        $this->view->title = 'Ошибка 404 - не найдено';
-        $this->view->ex = $this->ex;
-        $this->view->display(__DIR__ . '/../../templates/error.php');
+        $template = $this->twig->load('error.php');
+        echo $template->render([
+            'title' => 'Ошибка 404 - не найдено',
+            'ex' => $this->ex
+        ]);
     }
 }

@@ -8,30 +8,30 @@
     <title>Error Page</title>
 </head>
 <body>
-<h2><?php echo $title ?? $ex->getMessage(); ?></h2>
+<h2>{{ title ? title : ex.getMessage() }}</h2>
 <table border="1" cellpadding="5">
     <tr>
         <td>Сообщение</td>
-        <td><?php echo $ex->getMessage(); ?></td>
+        <td>{{ ex.getMessage() }}</td>
     </tr>
     <tr>
         <td>Код ошибки</td>
-        <td><?php echo $ex->getCode(); ?></td>
+        <td>{{ ex.getCode() }}</td>
     </tr>
     <tr>
         <td>Файл</td>
-        <td><?php echo $ex->getFile(); ?></td>
+        <td>{{ ex.getFile() }}</td>
     </tr>
     <tr>
         <td>Строка</td>
-        <td><?php echo $ex->getLine(); ?></td>
+        <td>{{ ex.getLine() }}</td>
     </tr>
-    <?php if (!empty($sql)) : ?>
+     {% if sql %}
         <tr>
             <td>Запрос</td>
-            <td><?php echo $sql; ?></td>
+            <td>{{ sql }}</td>
         </tr>
-    <?php endif; ?>
+    {% endif %}
 </table>
 </body>
 </html>

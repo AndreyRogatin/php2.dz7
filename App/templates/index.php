@@ -10,25 +10,18 @@
 <body>
 <p align="right"><a href="/Admin/Index/action">Админ Панель</a></p>
 <hr>
-<?php
-
-foreach ($articles as $article) :
-    ?>
-    <h2>
-        <a href="/?ctrl=article&act=action&id=<?php echo $article->id; ?>">
-            <?php echo $article->title; ?>
-        </a>
-    </h2>
-    <p><?php echo $article->body; ?></p>
-    <p>
-        <?php
-        if (isset($article->author)) {
-            echo 'Автор: ' . $article->author->name;
-        }
-        ?>
-    </p>
-    <?php
-endforeach;
-?>
+{% for article in articles %}
+<h2>
+    <a href="/?ctrl=article&act=action&id={{ article.id }}">
+        {{ article.title }}
+    </a>
+</h2>
+<p>{{ article.body }}</p>
+<p>
+    {% if article.author %}
+    Автор: {{ article.author.name }}
+    {% endif %}
+</p>
+{% endfor %}
 </body>
 </html>

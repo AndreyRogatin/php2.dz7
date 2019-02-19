@@ -8,14 +8,12 @@
     <title>Article Template</title>
 </head>
 <body>
-<h2><?php echo $article->title; ?></h2>
-<p><?php echo $article->body; ?></p>
+<h2>{{ article.title }}</h2>
+<p>{{ article.body }}</p>
 <p>
-    <?php
-    if (isset($article->author)) {
-        echo 'Автор: ' . $article->author->name;
-    }
-    ?>
+    {% if article.author %}
+    Автор: {{ article.author.name }}
+    {% endif %}
 </p>
 </body>
 </html>
