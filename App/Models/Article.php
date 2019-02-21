@@ -47,6 +47,10 @@ class Article extends Model
      */
     public static function findNLastArticles(int $num)
     {
-        return array_reverse(array_slice(static::findAll(), -$num));
+        $articles = [];
+        foreach (static::findAll() as $article) {
+            $articles[] = $article;
+        }
+        return array_reverse(array_slice($articles, -$num));
     }
 }

@@ -37,13 +37,33 @@ class Db
         }
     }
 
+    public function queryEach($sql, $params = [], $class = '')
+    {
+        try {
+            $sth = $this->dbh->prepare($sql);
+            $sth->execute($params);
+        } catch (\PDOException $ex) {
+            throw new DbException('Ошибка запроса к БД', 2, $ex, $sql);
+        }
+
+        if (empty($class)) {
+            $sth->setFetchMode(\PDO::FETCH_ASSOC);
+        } else {
+            $sth->setFetchMode(\PDO::FETCH_CLASS, $class);
+        }
+
+        while ($row = $sth->fetch()) {
+            yield $row;
+        }
+    }
+
     public function execute($sql, $params = [])
     {
         try {
             $sth = $this->dbh->prepare($sql);
             $res = $sth->execute($params);
         } catch (\PDOException $ex) {
-            throw new DbException('Ошибка запроса к БД', 2, $ex, $sql);
+            throw new DbException('Ошибка запроса к БД', 3, $ex, $sql);
         }
 
         return $res;
