@@ -12,20 +12,7 @@
 <h2>Админ Панель</h2>
 <hr>
 <h3>Список статей</h3>
-<ul>
-    <?php
-
-    foreach ($articles as $article) :
-        ?>
-        <li>
-            <a href="/Admin/Article/action?id=<?php echo $article->id; ?>">
-                <?php echo $article->title; ?>
-            </a>
-        </li>
-        <?php
-    endforeach;
-    ?>
-</ul>
+<?php echo $table; ?>
 <hr>
 <p align="center">
     <a href="/Admin/Create/action">Добавить статью</a>
