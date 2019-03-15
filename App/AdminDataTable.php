@@ -8,7 +8,7 @@ class AdminDataTable
     protected $models = [];
     protected $funcs = [];
 
-    public function __construct(array $models, array $funcs)
+    public function __construct(iterable $models, iterable $funcs)
     {
         $this->models = $models;
         $this->funcs = $funcs;

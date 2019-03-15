@@ -16,7 +16,7 @@ class DbError extends Error
     protected function handle()
     {
         Logger::log($this->ex);
-        $template = $this->twig->load('error.php');
+        $template = $this->loadTemplate('error.php');
         echo $template->render([
             'title' => $this->ex->getMessage(),
             'sql' => $this->ex->getSql(),

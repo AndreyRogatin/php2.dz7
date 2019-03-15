@@ -10,7 +10,6 @@ use Twig\Loader\FilesystemLoader;
 abstract class Error extends Controller
 {
     protected $ex;
-    protected $twig;
 
     public function __construct(\Exception $ex)
     {

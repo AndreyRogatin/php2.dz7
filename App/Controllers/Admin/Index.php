@@ -12,10 +12,7 @@ class Index extends Controller
     protected function handle()
     {
         $funcs = include __DIR__ . '/../../funcs.php';
-        $models = [];
-        foreach (Article::findAll() as $article) {
-            $models[] = $article;
-        }
+        $models = Article::findAll();
         $table = new AdminDataTable($models, $funcs);
         $this->view->table = $table->render();
 
